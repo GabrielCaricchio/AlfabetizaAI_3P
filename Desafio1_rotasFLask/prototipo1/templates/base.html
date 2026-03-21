@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}{% endblock %}</title>
+  <link rel="icon" type="image" href="{{url_for('static', filename='images/favicon1.webp')}}">
+  {% block css %}{% endblock %}
+</head>
+<body>
+
+  <header>
+      <a href="/">Home</a>
+      <a href="/calças">Calças</a>
+      <a href="/camisas">Camisas</a>
+      <a href="/cadastro">Cadastro</a>
+      <a href="/login">Login</a>
+  </header>
+
+  {% block conteudo %}
+
+  {% endblock %}
+</body>
+</html>
+

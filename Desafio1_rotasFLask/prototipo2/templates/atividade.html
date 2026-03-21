@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title> Atividade </title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+
+            <h2>Olá, {{ nome }}!</h2>
+
+            <p class="atividade-texto">
+                {{ atividade }}
+            </p>
+
+            <form action="/atividade" method="post">
+                <input type="hidden" name="nome" value="{{ nome }}">
+                <input type="hidden" name="serie" value="{{ serie }}">
+                <button type="submit">Nova Atividade</button>
+            </form>
+            <br>
+
+            <a href="/" class="btn">Voltar ao início</a>
+
+        </div>
+    </div>
+</body>
+
+</html>

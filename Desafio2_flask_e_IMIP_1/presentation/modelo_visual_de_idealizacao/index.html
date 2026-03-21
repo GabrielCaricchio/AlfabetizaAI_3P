@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LetraLand – Site interativo de alfabetização para crianças de 2 a 6 anos" />
+  <title>LetraLand 🌈 – Aprender é Divertido!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== ACESSIBILIDADE: BARRA DE TEMAS ========== -->
+  <div class="accessibility-bar" role="toolbar" aria-label="Opções de acessibilidade visual">
+    <span class="access-label">👁️ Acessibilidade:</span>
+    <button class="theme-btn active" id="btn-light" data-theme="light" aria-pressed="true" title="Modo Claro">
+      ☀️ <span>Claro</span>
+    </button>
+    <button class="theme-btn" id="btn-dark" data-theme="dark" aria-pressed="false" title="Modo Escuro">
+      🌙 <span>Escuro</span>
+    </button>
+    <button class="theme-btn" id="btn-daltonism" data-theme="daltonism" aria-pressed="false" title="Modo Daltonismo">
+      🎨 <span>Daltonismo</span>
+    </button>
+    <button class="sound-toggle-btn" id="btn-sound" aria-label="Ativar ou desativar sons" title="Sons">
+      🔊 <span>Sons: ON</span>
+    </button>
+  </div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- LOGO -->
+      <a href="#inicio" class="logo" aria-label="LetraLand - Página Inicial">
+        <div class="logo-icon" aria-hidden="true">
+          <span class="logo-letter logo-l">L</span>
+          <span class="logo-letter logo-e">e</span>
+          <span class="logo-letter logo-t">t</span>
+          <span class="logo-letter logo-r">r</span>
+          <span class="logo-letter logo-a">a</span>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">LetraLand</span>
+          <span class="logo-tagline">✨ Aprenda Brincando!</span>
+        </div>
+      </a>
+
+      <!-- MENU HAMBURGUER (mobile) -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- NAVEGAÇÃO -->
+      <nav class="main-nav" id="main-nav" role="navigation" aria-label="Menu principal">
+        <ul class="nav-list">
+          <li>
+            <a href="#inicio" class="nav-link active" data-sound="click">
+              <span class="nav-icon" aria-hidden="true">🏠</span>
+              <span>Início</span>
+            </a>
+          </li>
+          <li>
+            <a href="#servicos" class="nav-link" data-sound="click">
+              <span class="nav-icon" aria-hidden="true">⭐</span>
+              <span>O Que Fazemos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#suporte" class="nav-link" data-sound="click">
+              <span class="nav-icon" aria-hidden="true">💬</span>
+              <span>Suporte</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ========== MAIN ========== -->
+  <main id="main-content">
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero-section" id="inicio" aria-labelledby="hero-title">
+
+      <!-- Nuvens decorativas -->
+      <div class="clouds-container" aria-hidden="true">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+      </div>
+
+      <!-- Estrelas decorativas -->
+      <div class="stars-container" aria-hidden="true">
+        <span class="star star-1">⭐</span>
+        <span class="star star-2">🌟</span>
+        <span class="star star-3">✨</span>
+        <span class="star star-4">⭐</span>
+        <span class="star star-5">🌟</span>
+      </div>
+
+      <div class="hero-content">
+
+        <!-- NUVEM DE LETRAS -->
+        <div class="letter-cloud" aria-label="Nuvem de Letras decorativa">
+          <div class="letter-cloud-inner">
+            <span class="floating-letter fl-1" data-letter="A" data-sound="letter">A</span>
+            <span class="floating-letter fl-2" data-letter="B" data-sound="letter">B</span>
+            <span class="floating-letter fl-3" data-letter="C" data-sound="letter">C</span>
+            <span class="floating-letter fl-4" data-letter="D" data-sound="letter">D</span>
+            <span class="floating-letter fl-5" data-letter="E" data-sound="letter">E</span>
+            <span class="floating-letter fl-6" data-letter="F" data-sound="letter">F</span>
+            <span class="floating-letter fl-7" data-letter="G" data-sound="letter">G</span>
+            <span class="floating-letter fl-8" data-letter="H" data-sound="letter">H</span>
+            <span class="floating-letter fl-9" data-letter="I" data-sound="letter">I</span>
+            <span class="floating-letter fl-10" data-letter="J" data-sound="letter">J</span>
+            <span class="floating-letter fl-11" data-letter="K" data-sound="letter">K</span>
+            <span class="floating-letter fl-12" data-letter="L" data-sound="letter">L</span>
+          </div>
+
+          <!-- Título principal dentro da nuvem -->
+          <div class="hero-title-wrap">
+            <h1 class="hero-title" id="hero-title">
+              <span class="hero-title-line1">Olá, Amiguinho!</span>
+              <span class="hero-title-line2">🌈 Vamos Aprender?</span>
+            </h1>
+            <p class="hero-subtitle">
+              Letras, sílabas e muito mais — tudo de um jeito divertido!
+            </p>
+          </div>
+        </div>
+
+        <!-- PERSONAGEM MASCOTE SVG -->
+        <div class="mascot-container" aria-label="Mascote LetraLand: Letrinha, a letra A animada">
+          <div class="mascot" id="mascot">
+            <!-- SVG Mascote: Letra A com rosto -->
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="mascot-svg" role="img" aria-label="Letrinha, mascote do LetraLand">
+              <!-- Sombra -->
+              <ellipse cx="100" cy="230" rx="55" ry="10" fill="rgba(0,0,0,0.12)" />
+              <!-- Corpo da letra A -->
+              <path d="M100 20 L160 200 H130 L115 155 H85 L70 200 H40 Z" fill="#FFB343" stroke="#e8960a" stroke-width="3" stroke-linejoin="round"/>
+              <!-- Barra do A -->
+              <rect x="78" y="140" width="44" height="18" rx="6" fill="#F3DE2C" stroke="#c9b200" stroke-width="2"/>
+              <!-- Olho esquerdo -->
+              <circle cx="80" cy="90" r="14" fill="white" stroke="#333" stroke-width="2"/>
+              <circle cx="83" cy="90" r="7" fill="#333"/>
+              <circle cx="86" cy="86" r="3" fill="white"/>
+              <!-- Olho direito -->
+              <circle cx="120" cy="90" r="14" fill="white" stroke="#333" stroke-width="2"/>
+              <circle cx="123" cy="90" r="7" fill="#333"/>
+              <circle cx="126" cy="86" r="3" fill="white"/>
+              <!-- Bochechas -->
+              <circle cx="68" cy="108" r="10" fill="#FF9999" opacity="0.6"/>
+              <circle cx="132" cy="108" r="10" fill="#FF9999" opacity="0.6"/>
+              <!-- Sorriso -->
+              <path d="M82 115 Q100 135 118 115" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Bracinho esquerdo -->
+              <ellipse cx="32" cy="130" rx="14" ry="8" fill="#FFB343" stroke="#e8960a" stroke-width="2" transform="rotate(-30 32 130)"/>
+              <!-- Bracinho direito -->
+              <ellipse cx="168" cy="130" rx="14" ry="8" fill="#FFB343" stroke="#e8960a" stroke-width="2" transform="rotate(30 168 130)"/>
+              <!-- Pezinhos -->
+              <ellipse cx="75" cy="215" rx="16" ry="9" fill="#FFB343" stroke="#e8960a" stroke-width="2"/>
+              <ellipse cx="125" cy="215" rx="16" ry="9" fill="#FFB343" stroke="#e8960a" stroke-width="2"/>
+              <!-- Chapéu de festa -->
+              <polygon points="100,0 85,30 115,30" fill="#FF1493" stroke="#c00070" stroke-width="2"/>
+              <circle cx="100" cy="0" r="5" fill="#F3DE2C"/>
+              <line x1="85" y1="30" x2="115" y2="30" stroke="#FF1493" stroke-width="3"/>
+            </svg>
+            <!-- Balão de fala -->
+            <div class="speech-bubble" id="speech-bubble" aria-live="polite">
+              Clique em mim! 😄
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTÃO CTA -->
+        <div class="hero-cta">
+          <a href="#suporte" class="btn-cta btn-primary" data-sound="pop" role="button">
+            <span class="btn-icon" aria-hidden="true">📬</span>
+            Entrar em Contato
+          </a>
+          <a href="#servicos" class="btn-cta btn-secondary" data-sound="pop" role="button">
+            <span class="btn-icon" aria-hidden="true">🚀</span>
+            Explorar!
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Ondas decorativas no fundo do hero -->
+      <div class="hero-waves" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="var(--wave-color)"/>
+        </svg>
+      </div>
+
+    </section>
+
+    <!-- ========== SEÇÃO SERVIÇOS ========== -->
+    <section class="services-section" id="servicos" aria-labelledby="services-title">
+
+      <div class="section-header">
+        <h2 class="section-title" id="services-title">
+          <span class="title-decoration" aria-hidden="true">⭐</span>
+          O Que Fazemos?
+          <span class="title-decoration" aria-hidden="true">⭐</span>
+        </h2>
+        <p class="section-subtitle">Tudo para você aprender brincando!</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- CARD 1: Letras e Sílabas -->
+        <article class="service-card" data-sound="card" tabindex="0" role="button" aria-label="Letras e Sílabas - Aprenda o alfabeto de forma divertida">
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">
+            <div class="card-icon" aria-hidden="true">
+              <!-- SVG letras animadas -->
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="card-svg">
+                <!-- Fundo circular -->
+                <circle cx="60" cy="60" r="55" fill="#FFF9E6" stroke="#FFB343" stroke-width="3"/>
+                <!-- Letra A -->
+                <text x="18" y="72" font-size="42" font-family="Baloo 2, sans-serif" font-weight="800" fill="#FF1493">A</text>
+                <!-- Letra B -->
+                <text x="52" y="55" font-size="32" font-family="Baloo 2, sans-serif" font-weight="800" fill="#FFB343">B</text>
+                <!-- Letra C -->
+                <text x="78" y="80" font-size="28" font-family="Baloo 2, sans-serif" font-weight="800" fill="#00BFBF">C</text>
+                <!-- Estrelinhas -->
+                <text x="10" y="30" font-size="14">⭐</text>
+                <text x="90" y="25" font-size="12">✨</text>
+                <text x="95" y="95" font-size="10">🌟</text>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Letras e Sílabas</h3>
+            <p class="card-text">Aprenda o alfabeto com letras coloridas e animadas! Cada letra tem um som especial.</p>
+            <div class="card-tags">
+              <span class="tag">🔤 Alfabeto</span>
+              <span class="tag">🎵 Sons</span>
+              <span class="tag">🎨 Cores</span>
+            </div>
+          </div>
+          <button class="card-btn" data-sound="pop" aria-label="Começar a aprender Letras e Sílabas">
+            <span>Aprender!</span> 🎉
+          </button>
+        </article>
+
+        <!-- CARD 2: Notebook Feliz -->
+        <article class="service-card card-featured" data-sound="card" tabindex="0" role="button" aria-label="Atividades Digitais - Exercícios interativos no computador">
+          <div class="card-glow"></div>
+          <div class="card-badge" aria-label="Destaque">⭐ Favorito!</div>
+          <div class="card-icon-wrap">
+            <div class="card-icon" aria-hidden="true">
+              <!-- SVG Notebook com carinha feliz pixelada -->
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="card-svg">
+                <!-- Fundo circular -->
+                <circle cx="60" cy="60" r="55" fill="#E6FFF9" stroke="#00FFFF" stroke-width="3"/>
+                <!-- Corpo do notebook -->
+                <rect x="20" y="30" width="80" height="55" rx="8" fill="#F3DE2C" stroke="#c9b200" stroke-width="2.5"/>
+                <!-- Tela -->
+                <rect x="28" y="36" width="64" height="38" rx="5" fill="#1a1a2e" stroke="#333" stroke-width="1.5"/>
+                <!-- Teclado -->
+                <rect x="25" y="88" width="70" height="10" rx="4" fill="#e0c800" stroke="#c9b200" stroke-width="1.5"/>
+                <!-- Touchpad -->
+                <rect x="47" y="90" width="26" height="6" rx="3" fill="#c9b200"/>
+                <!-- Rosto pixelado na tela -->
+                <!-- Olhos pixel -->
+                <rect x="40" y="45" width="8" height="8" rx="1" fill="#00FFFF"/>
+                <rect x="72" y="45" width="8" height="8" rx="1" fill="#00FFFF"/>
+                <!-- Brilho nos olhos -->
+                <rect x="42" y="47" width="3" height="3" fill="white"/>
+                <rect x="74" y="47" width="3" height="3" fill="white"/>
+                <!-- Sorriso pixel -->
+                <rect x="40" y="60" width="8" height="4" rx="1" fill="#00FF88"/>
+                <rect x="48" y="64" width="24" height="4" rx="1" fill="#00FF88"/>
+                <rect x="72" y="60" width="8" height="4" rx="1" fill="#00FF88"/>
+                <!-- Bochechas pixel -->
+                <rect x="33" y="57" width="6" height="4" rx="1" fill="#FF9999" opacity="0.7"/>
+                <rect x="81" y="57" width="6" height="4" rx="1" fill="#FF9999" opacity="0.7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Atividades Digitais</h3>
+            <p class="card-text">Exercícios divertidos no computador com jogos, puzzles e desafios para aprender mais!</p>
+            <div class="card-tags">
+              <span class="tag">🎮 Jogos</span>
+              <span class="tag">🧩 Puzzles</span>
+              <span class="tag">🏆 Desafios</span>
+            </div>
+          </div>
+          <button class="card-btn" data-sound="pop" aria-label="Começar Atividades Digitais">
+            <span>Jogar!</span> 🕹️
+          </button>
+        </article>
+
+        <!-- CARD 3: Dashboard de Progresso -->
+        <article class="service-card" data-sound="card" tabindex="0" role="button" aria-label="Meu Progresso - Acompanhe sua evolução nos estudos">
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">
+            <div class="card-icon" aria-hidden="true">
+              <!-- SVG Dashboard -->
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="card-svg">
+                <!-- Fundo circular -->
+                <circle cx="60" cy="60" r="55" fill="#FFE6F5" stroke="#FF1493" stroke-width="3"/>
+                <!-- Painel principal -->
+                <rect x="18" y="28" width="84" height="64" rx="10" fill="white" stroke="#FF1493" stroke-width="2.5"/>
+                <!-- Título do dashboard -->
+                <rect x="26" y="35" width="50" height="8" rx="4" fill="#FF1493" opacity="0.3"/>
+                <!-- Barras de progresso -->
+                <!-- Barra 1 (Letras) -->
+                <rect x="26" y="52" width="68" height="8" rx="4" fill="#eee"/>
+                <rect x="26" y="52" width="52" height="8" rx="4" fill="#FFB343"/>
+                <text x="80" y="59" font-size="7" fill="#333" font-family="Nunito">76%</text>
+                <!-- Barra 2 (Sílabas) -->
+                <rect x="26" y="65" width="68" height="8" rx="4" fill="#eee"/>
+                <rect x="26" y="65" width="40" height="8" rx="4" fill="#00FFFF"/>
+                <text x="80" y="72" font-size="7" fill="#333" font-family="Nunito">59%</text>
+                <!-- Barra 3 (Palavras) -->
+                <rect x="26" y="78" width="68" height="8" rx="4" fill="#eee"/>
+                <rect x="26" y="78" width="28" height="8" rx="4" fill="#FF1493"/>
+                <text x="80" y="85" font-size="7" fill="#333" font-family="Nunito">41%</text>
+                <!-- Estrelas de conquista -->
+                <text x="18" y="105" font-size="14">⭐</text>
+                <text x="34" y="105" font-size="14">⭐</text>
+                <text x="50" y="105" font-size="14">⭐</text>
+                <text x="66" y="105" font-size="14">☆</text>
+                <text x="82" y="105" font-size="14">☆</text>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Meu Progresso</h3>
+            <p class="card-text">Veja o quanto você já aprendeu! Ganhe estrelas e conquistas a cada desafio superado.</p>
+            <div class="card-tags">
+              <span class="tag">📊 Progresso</span>
+              <span class="tag">🌟 Conquistas</span>
+              <span class="tag">🎖️ Medalhas</span>
+            </div>
+          </div>
+          <button class="card-btn" data-sound="pop" aria-label="Ver Meu Progresso">
+            <span>Ver Progresso!</span> 📈
+          </button>
+        </article>
+
+      </div>
+
+      <!-- MINI JOGO: Alfabeto interativo -->
+      <div class="alphabet-game" aria-labelledby="alphabet-game-title">
+        <h3 class="alphabet-game-title" id="alphabet-game-title">
+          🎮 Clique nas Letras e Ouça os Sons!
+        </h3>
+        <div class="alphabet-grid" role="group" aria-label="Alfabeto interativo">
+          <!-- Letras geradas pelo JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========== SEÇÃO SUPORTE ========== -->
+    <section class="support-section" id="suporte" aria-labelledby="support-title">
+
+      <div class="support-inner">
+
+        <div class="support-illustration" aria-hidden="true">
+          <!-- SVG Ilustração suporte -->
+          <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" class="support-svg">
+            <!-- Fundo oval -->
+            <ellipse cx="150" cy="260" rx="120" ry="20" fill="rgba(0,0,0,0.08)"/>
+            <!-- Corpo personagem -->
+            <circle cx="150" cy="120" r="70" fill="#FFB343" stroke="#e8960a" stroke-width="4"/>
+            <!-- Olhos -->
+            <circle cx="130" cy="105" r="16" fill="white" stroke="#333" stroke-width="2"/>
+            <circle cx="133" cy="105" r="8" fill="#333"/>
+            <circle cx="136" cy="101" r="3" fill="white"/>
+            <circle cx="170" cy="105" r="16" fill="white" stroke="#333" stroke-width="2"/>
+            <circle cx="173" cy="105" r="8" fill="#333"/>
+            <circle cx="176" cy="101" r="3" fill="white"/>
+            <!-- Bochechas -->
+            <circle cx="116" cy="125" r="12" fill="#FF9999" opacity="0.6"/>
+            <circle cx="184" cy="125" r="12" fill="#FF9999" opacity="0.6"/>
+            <!-- Sorriso grande -->
+            <path d="M125 138 Q150 165 175 138" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <!-- Chapéu -->
+            <ellipse cx="150" cy="55" rx="45" ry="12" fill="#FF1493" stroke="#c00070" stroke-width="2"/>
+            <rect x="120" y="15" width="60" height="42" rx="8" fill="#FF1493" stroke="#c00070" stroke-width="2"/>
+            <!-- Estrela no chapéu -->
+            <text x="140" y="42" font-size="20">⭐</text>
+            <!-- Braços -->
+            <path d="M80 140 Q55 120 45 145" stroke="#FFB343" stroke-width="18" fill="none" stroke-linecap="round"/>
+            <path d="M220 140 Q245 120 255 145" stroke="#FFB343" stroke-width="18" fill="none" stroke-linecap="round"/>
+            <!-- Mãos -->
+            <circle cx="45" cy="148" r="14" fill="#FFB343" stroke="#e8960a" stroke-width="2"/>
+            <circle cx="255" cy="148" r="14" fill="#FFB343" stroke="#e8960a" stroke-width="2"/>
+            <!-- Corpo -->
+            <rect x="110" y="185" width="80" height="70" rx="20" fill="#F3DE2C" stroke="#c9b200" stroke-width="3"/>
+            <!-- Pernas -->
+            <rect x="118" y="248" width="22" height="30" rx="10" fill="#F3DE2C" stroke="#c9b200" stroke-width="2"/>
+            <rect x="160" y="248" width="22" height="30" rx="10" fill="#F3DE2C" stroke="#c9b200" stroke-width="2"/>
+            <!-- Pés -->
+            <ellipse cx="129" cy="278" rx="18" ry="10" fill="#FFB343" stroke="#e8960a" stroke-width="2"/>
+            <ellipse cx="171" cy="278" rx="18" ry="10" fill="#FFB343" stroke="#e8960a" stroke-width="2"/>
+            <!-- Coração na camiseta -->
+            <text x="138" y="228" font-size="22">❤️</text>
+          </svg>
+        </div>
+
+        <div class="support-content">
+          <h2 class="section-title" id="support-title">
+            <span class="title-decoration" aria-hidden="true">💬</span>
+            Fale com a Gente!
+          </h2>
+          <p class="support-description">
+            Tem alguma dúvida ou sugestão? Nossa equipe adoraria ouvir você! Mande uma mensagem e responderemos rapidinho! 🚀
+          </p>
+
+          <form class="contact-form" id="contact-form" novalidate aria-label="Formulário de contato">
+
+            <div class="form-group">
+              <label for="name" class="form-label">
+                <span class="label-icon" aria-hidden="true">👦</span>
+                Seu Nome
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                placeholder="Como você se chama?"
+                autocomplete="name"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">
+                <span class="label-icon" aria-hidden="true">📧</span>
+                E-mail
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="seu@email.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">
+                <span class="label-icon" aria-hidden="true">✏️</span>
+                Mensagem
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                placeholder="Escreva sua mensagem aqui..."
+                rows="4"
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" data-sound="success" aria-label="Enviar mensagem de contato">
+              <span class="btn-icon" aria-hidden="true">🚀</span>
+              Enviar Mensagem!
+            </button>
+
+          </form>
+
+          <!-- Mensagem de sucesso -->
+          <div class="form-success" id="form-success" role="alert" aria-live="assertive" hidden>
+            <div class="success-icon" aria-hidden="true">🎉</div>
+            <h3>Mensagem Enviada!</h3>
+            <p>Obrigado! Responderemos em breve. 😊</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" role="contentinfo">
+
+    <div class="footer-waves" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,0 L0,0 Z" fill="var(--footer-wave-color)"/>
+      </svg>
+    </div>
+
+    <div class="footer-inner">
+
+      <!-- Logo e descrição -->
+      <div class="footer-brand">
+        <div class="footer-logo" aria-label="LetraLand">
+          <span class="footer-logo-icon" aria-hidden="true">📚</span>
+          <span class="footer-logo-name">LetraLand</span>
+        </div>
+        <p class="footer-description">
+          Tornando o aprendizado uma aventura mágica para crianças de 2 a 6 anos!
+        </p>
+        <div class="footer-social" aria-label="Redes sociais">
+          <a href="#" class="social-btn" data-sound="click" aria-label="Facebook do LetraLand" title="Facebook">
+            <span aria-hidden="true">📘</span>
+          </a>
+          <a href="#" class="social-btn" data-sound="click" aria-label="Instagram do LetraLand" title="Instagram">
+            <span aria-hidden="true">📸</span>
+          </a>
+          <a href="#" class="social-btn" data-sound="click" aria-label="YouTube do LetraLand" title="YouTube">
+            <span aria-hidden="true">▶️</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links: Navegação -->
+      <div class="footer-links-group">
+        <h3 class="footer-links-title">
+          <span aria-hidden="true">🗺️</span> Navegar
+        </h3>
+        <ul class="footer-links">
+          <li><a href="#inicio" data-sound="click">🏠 Início</a></li>
+          <li><a href="#servicos" data-sound="click">⭐ O Que Fazemos</a></li>
+          <li><a href="#suporte" data-sound="click">💬 Suporte</a></li>
+        </ul>
+      </div>
+
+      <!-- Links: Aprender -->
+      <div class="footer-links-group">
+        <h3 class="footer-links-title">
+          <span aria-hidden="true">📖</span> Aprender
+        </h3>
+        <ul class="footer-links">
+          <li><a href="#" data-sound="click">🔤 Alfabeto</a></li>
+          <li><a href="#" data-sound="click">🎵 Sílabas</a></li>
+          <li><a href="#" data-sound="click">🎮 Jogos</a></li>
+          <li><a href="#" data-sound="click">📊 Progresso</a></li>
+        </ul>
+      </div>
+
+      <!-- Links: Ajuda -->
+      <div class="footer-links-group">
+        <h3 class="footer-links-title">
+          <span aria-hidden="true">❓</span> Ajuda
+        </h3>
+        <ul class="footer-links">
+          <li><a href="#" data-sound="click">📋 FAQ</a></li>
+          <li><a href="#suporte" data-sound="click">📬 Contato</a></li>
+          <li><a href="#" data-sound="click">🔒 Privacidade</a></li>
+          <li><a href="#" data-sound="click">📜 Termos</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Rodapé inferior -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2025 <strong>LetraLand</strong> — Feito com
+        <span class="heart" aria-label="amor" aria-hidden="true">❤️</span>
+        para crianças curiosas!
+      </p>
+      <p class="footer-credits">
+        🌈 Aprender é a maior aventura!
+      </p>
+    </div>
+
+  </footer>
+
+  <!-- ========== BOTÃO VOLTAR AO TOPO ========== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo da página" title="Voltar ao topo" hidden>
+    <span aria-hidden="true">🚀</span>
+  </button>
+
+  <!-- ========== TOAST NOTIFICATION ========== -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block titulo %}Calças{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{url_for('static', filename='css/calças.css')}}">{% endblock %}
+{% block conteudo %}
+  <h1>Temos os modelos mais elegantes e confortaveis de calças, perfeitos para todos os momentos!</h1>
+
+  <div class="container">
+    <img src="{{url_for('static', filename='images/modelos-calças.png')}}" alt="modelos com calças chiques">
+  </div>
+
+  <br>
+  <h5>Produtos:</h5>
+  <p>Tipo: {{ tipos_calças_html.tipo | title }}</p>
+  <p>Preço: {{ tipos_calças_html.preço }}</p>
+  <p>Descrição: {{ tipos_calças_html.descrição | capitalize }}</p>
+  <br>
+
+  <h5>Outros Modelos:</h5>
+  <ul>
+    {% for outra_calça in outras_calças_html %}
+      <li>{{outra_calça | capitalize}}</li>
+
+    {% else %}
+      <p>Sem produtos em estoque!</p>
+    {% endfor %}
+    <!--
+    o else no contexto do for, só será executado caso não tenha nenhum lista nessa lista
+    -->
+  </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block titulo %}Cadastro{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{url_for('static', filename='css/cadastro.css')}}">{% endblock %}
+{% block conteudo %}
+  <br>
+  <form action="" method="post">
+    nome: <input type="text" name="nomeForm" id=""> <br> <br>
+    cpf: <input type="text" name="cpfForm" id=""> <br> <br>
+    idade: <input type="number" name="idadeForm" id=""> <br> <br>
+    email: <input type="email" name="emailForm" id=""> <br> <br>
+    senha: <input type="password" name="senhaForms" id=""> <br> <br>
+    <input type="submit" value="Confirmar">
+{% endblock %}

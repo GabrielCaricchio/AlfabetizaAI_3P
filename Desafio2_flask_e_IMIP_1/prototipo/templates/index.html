@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block titulo %}Nuvem de Letras{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">{% endblock %}
+{% block conteudo %}
+<header>
+<nav>
+  <figure>
+  <img class="logo" src="{{url_for('static', filename='images/logo.webp')}}" alt="Logo da Nuvem de Letras">
+  <figcaption>Nuvem de Letras</figcaption>
+  </figure>
+  <ul>
+    <!--TODO: após o acrescimo de conteúdo conferio direcionamento dos links da página-->
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#o-que-fazemos">O que fazemos</a></li>
+    <li><a href="#suporte">Suporte</a></li>
+  </ul>
+</nav>
+</header>
+
+<main>
+<section class="hero-section" id="inicio">
+<di class="comeco">
+  <div class="balao">
+    <h2 style="color: #FFB343">Olá, Amiguinho! 🌈 Vamos Aprender?</h2>
+    <p style="color: #FF1493; font-weight:bold;">
+      Letras, sílabas e muito mais — tudo de um jeito divertido!
+    </p>
+  </div>
+
+  <div>
+    <figure >
+      <img class="personagem" src="{{url_for('static', filename='images/letra-sorrindo.png')}}" alt="personagem em formato de letra A sorrindo">
+    </figure>
+  </div>
+</div>
+
+</section>
+<br>
+<section class="site-activities" id="o-que-fazemos">
+  <h2>Venha Aprender e se Divertir</h2>
+
+<!--TODO: fazer 3 cards (com icone, texto/paragrafo e botão), um para letras e silabas, outro para atividades,
+e uma para dashboard<-->
+<div class="container">
+  <section class="card">
+    <img src="{{url_for('static', filename='images/abc.png')}}" alt="Icone de ABC">
+    <h3>Escutar ABC</h3>
+    <p>Venha escutar o som de letras e silabas</p>
+    <a href="">Clique aqui</a>
+  </section><br>
+
+  <section class="card">
+    <img src="{{url_for('static', filename='images/abc-games.png')}}" alt="icone de blocos de ABC">
+    <h3>Jogar com ABC</h3>
+    <p>Aprenda enquanto se diverte</p>
+    <a href="">Clique aqui</a>
+  </section><br>
+
+  <section class="card">
+    <img src="{{url_for('static', filename='images/grafico.png')}}" alt="icone grafico">
+    <h3>Ver resultados</h3>
+    <p>Veja o progresso nos estudos</p>
+    <a href="">Clique aqui</a>
+  </section><br>
+</div>
+
+<!--TODO: fazer quadro com cubos de letras-->
+</section>
+<br>
+
+
+<section class="support" id="suporte">
+
+  <h2>Fale com a Gente!</h2>
+  <p>Tem alguma dúvida, sugestão ou encontrou algum erro?
+    Nossa equipe adoraria ouvir você!
+    Mande uma mensagem e responderemos rapidinho!</p>
+
+  <div>
+  <form class="forms-support" id="forms-suporte" action="/enviar" method="post">
+  <fieldset>
+    <br>
+    <div>
+      <label>Nome:</label>
+      <input type="text" name="nome-forms" placeholder="Digite seu nome aqui">
+    </div>
+    <br>
+    <div>
+      <label>Email:</label>
+      <input type="email" name="email-forms" placeholder="Digite seu email aqui">
+    </div>
+    <br>
+    <div>
+      <label>Telefone:</label>
+      <input type="tel" name="telefone-forms" placeholder="Digite seu telefone aqui">
+    </div>
+    <br>
+    <div>
+
+    <div>
+      <label>Qual o objetivo da sua mensagem?</label><br><br>
+      <div>
+        <input type="radio" name="objetivo" id="sugestao" value="sugestao">
+        <label for="sugestao">Tenho uma sugestão</label>
+      </div>
+      <div>
+        <input type="radio" name="objetivo" id="erro" value="erro">
+        <label for="erro">Encontrei um erro</label>
+      </div>
+      <div>
+        <input type="radio" name="objetivo" id="duvida" value="duvida">
+        <label for="duvida">Tenho uma duvida</label>
+      </div>
+    </div><br>
+
+      <label>Mensagem:</label>
+      <input type="textarea" name="mensagem-forms" placeholder="Digite sua mensagem aqui">
+    </div>
+    <br>
+  <input type="submit" value="Enviar">
+  </fieldset>
+
+
+  </form>
+  </div>
+
+</section>
+</main>
+
+<footer>
+<!--TODO: fazer rodapé-->
+</footer>
+{% endblock %}

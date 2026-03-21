@@ -1,0 +1,117 @@
+body{
+  margin: 0; /*afasta o item apartir das paredes da pagina*/
+  font-family: serif;
+  background-color: #FFF;
+}
+
+.logo{
+  width: 40px; /* Largura fixa */
+  height: auto; /* Altura automática para manter a proporção */
+  padding-right: 10px; /*afata o item apartir das bordas da caixa em que ele está, neste caso do lado direito*/
+}
+
+nav{
+  box-shadow: 0 0 5px black ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /*como os itens devem ser distribuidos, neste caso divididos em dois lados*/
+  vertical-align: middle;
+  flex-wrap: wrap; /*para fazer os itens descerem quando não tiver espaço*/
+}
+
+ul{
+  display: flex; /* layaot em linha ou em coluna, neste caso em linha*/
+  list-style: none; /*tira o efeito de listas, a bolinha ou o valor de ordenação*/
+  gap: 20px; /*espaço entre os itens*/
+  padding-right: 30px;
+  flex-wrap: wrap;
+}
+
+a{
+  color: #112e61;
+  text-decoration: none; /*tira o sublinhado do link*/
+  text-transform: uppercase; /*deixa tudo maiusculo*/
+  font-weight: bold; /*deixa em negrito*/
+  border: 2px solid #112e61;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+figure{
+  display: flex;
+  justify-content: flex-start; /*itens alinhados no começo da pagina, a direita, porem sofrem efeito de padding e marging*/
+}
+
+figcaption{
+  padding-top: 5px;
+  color: #FFB343;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+main{
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+a:hover{
+  background-color: #F3DE2C;
+  color: blue;
+}
+
+.balao{
+  max-width: 100%; /*largura maxima*/
+  background: #ffffff;
+  border: 4px solid #fff5e6; /* Cor da borda suave */
+  border-radius: 100px;      /* Faz o formato oval, cuida das bordas*/
+  text-align: center;
+  font-family: sans-serif;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.balao:hover{
+  transform: scale(1.1);
+}
+.personagem{
+  max-width: 100px;              /* Use um tamanho fixo máximo em vez de % do container */
+  height: auto;
+  transition: transform 0.3s; /* efeito de transição e duração*/
+}
+
+.personagem:hover {
+  transform: scale(1.1); /* aumenta o tamanho do item*/
+}
+
+.comeco{
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+p{
+  text-wrap: pretty;
+}
+
+h2{
+  text-wrap: balance;
+}
+
+.forms-support{
+  max-width: 50%;
+}
+
+label{
+  font-weight: bold;
+}
+
+fieldset{
+  background-color: #E0D5FF;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
