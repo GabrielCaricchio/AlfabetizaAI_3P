@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Biblioteca de Fábulas 📚</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/biblioteca.css') }}?v=1">
+
+    <style>
+        body {
+            background-color: var(--fundo);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .estante {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* Modal (Janela da História) */
+        #modal-leitura {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(146, 146, 146, 0.8);
+            justify-content: center; align-items: center;
+            z-index: 100;
+        }
+
+        .btn-fechar { position: absolute; top: 10px; right: 20px; font-size: 2rem; cursor: pointer; color: red; }
+        
+        .controles { margin-top: 20px; }
+        .btn-ouvir { 
+            background: #89997e; color: white; border: none; 
+            padding: 10px 20px; border-radius: 50px; font-size: 1.1rem; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hora da História</h1>
+
+    <div class="estante">
+        <div class="livro"  id="livro1" onclick="abrirHistoria(0)">
+            <img src="{{ url_for('static', filename='images/Cigarra.jpg') }}">
+            <h3>A Cigarra e as Formigas</h3>
+        </div>
+        <div class="livro" onclick="abrirHistoria(1)">
+            <img src="{{ url_for('static', filename='images/ovelha.jpg') }}">
+            <h3>A Ovelha Perdida</h3>
+        </div>
+        <div class="livro" onclick="abrirHistoria(2)">
+            <img src="{{ url_for('static', filename='images/leao.webp') }}">
+            <h3>O Leão e o Ratinho</h3>
+        </div>
+        <div class="livro" onclick="abrirHistoria(3)">
+            <img src="{{ url_for('static', filename='images/Galinha.jpg') }}">
+            <h3>A Galinha de Ouro</h3>
+        </div>
+    </div>
+
+    <div id="modal-leitura">
+        <div class="conteudo-historia">
+            <span class="btn-fechar" onclick="fecharModal()">&times;</span>
+            <h2 id="titulo-fabula"></h2>
+            <p id="texto-fabula" style="font-size: 1.3rem; line-height: 1.6; text-align: left;"></p>
+            <div class="controles">
+                <button class="btn-ouvir" onclick="ouvirTexto()">🔊 Ouvir História</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fabulas = [
+            {
+                titulo: "A Cigarra e as Formigas",
+                texto: "Durante todo o verão, a cigarra apenas cantou. Enquanto isso, as formigas trabalhavam duro guardando comida. Quando o inverno chegou, a cigarra estava com fome. Ela aprendeu que é preciso trabalhar hoje para colher amanhã!"
+            },
+            {
+                titulo: "A Ovelha Perdida",
+                texto: "Um pastor tinha cem ovelhas, mas uma se perdeu. Ele não desistiu! Deixou as outras noventa e nove em segurança e procurou a ovelha perdida por toda parte até encontrá-la e trazê-la de volta com muita alegria."
+            },
+            {
+                titulo: "O Leão e o Ratinho",
+                texto: "Um ratinho sem querer acordou um leão. O leão o soltou. Mais tarde, o leão ficou preso em uma rede. O ratinho roeu as cordas e salvou o rei da floresta! Tamanho não é documento e amigos pequenos podem ser grandes heróis."
+            },
+            {
+                titulo: "A Galinha dos Ovos de Ouro",
+                texto: "Um homem tinha uma galinha que botava ovos de ouro puro! Querendo ficar rico depressa, ele matou a galinha para pegar todo o ouro de uma vez. Mas por dentro, ela era igual a qualquer outra. Quem tudo quer, tudo perde!"
+            }
+        ];
+
+        function abrirHistoria(index) {
+            document.getElementById('titulo-fabula').innerText = fabulas[index].titulo;
+            document.getElementById('texto-fabula').innerText = fabulas[index].texto;
+            document.getElementById('modal-leitura').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            window.speechSynthesis.cancel(); // Para a voz se fechar
+            document.getElementById('modal-leitura').style.display = 'none';
+        }
+
+        function ouvirTexto() {
+            const texto = document.getElementById('texto-fabula').innerText;
+            const fala = new SpeechSynthesisUtterance(texto);
+            fala.lang = 'pt-BR';
+            fala.rate = 0.9; // Um pouco mais lento para crianças
+            window.speechSynthesis.speak(fala);
+        }
+    </script>
+</body>
+</html>

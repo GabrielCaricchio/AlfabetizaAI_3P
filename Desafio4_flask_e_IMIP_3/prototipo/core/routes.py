@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import render_template, jsonify
 from core.app import app
+from ai.chatbot import gerar_pergunta
 
 @app.route('/')
 def index():
@@ -16,3 +17,8 @@ def quiz():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/api/questao')
+def api_questao():
+    dados = gerar_pergunta()
+    return jsonify(dados)

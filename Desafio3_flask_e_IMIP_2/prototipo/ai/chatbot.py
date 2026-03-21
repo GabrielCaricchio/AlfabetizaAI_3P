@@ -9,45 +9,38 @@ load_dotenv()
 client = OpenAI(
   api_key=os.getenv("OPENAI_API_KEY"))
 
-import json
+response = client.responses.create(
+  model="gpt-5-nano",
 
-def gerar_pergunta():
-    try:
-        response = client.responses.create(
-          model="gpt-5-nano",
+  input="Você é um sistema de criação de questões para alfabetização de crianças e adolescentes," \
+  "você fará uma nova questão(cada questão deve perguntar sobre algo distinto, um novo tema e aumentando nivel)" \
+  "curta para auxiliar crianças de 5 a 9 anos a aprenderem sobre letras," \
+  "silabas e palavras(as perguntas devem ser faceis e intuitivas para essas crianças que estão começando a aprender" \
+  ",e que não tem boa capacidade de leitura e escrita)," \
+  "sua resposta deve ser em formato json/dict usando chave valor, terão 6 chaves:" \
+  "pergunta, resposta1, resposta2, resposta3, resposta4, resposta_certa." \
+  "Em resposta_certa deve conter o valor correto (não pode ser a chave, tem que ser o valor)",
 
-          input="Você é um sistema de criação de questões para alfabetização de crianças e adolescentes," \
-          "você fará uma nova questão(cada questão deve perguntar sobre algo distinto, um novo tema e aumentando nivel)" \
-          "curta para auxiliar crianças de 5 a 9 anos a aprenderem sobre letras," \
-          "silabas e palavras(as perguntas devem ser faceis e intuitivas para essas crianças que estão começando a aprender" \
-          ",e que não tem boa capacidade de leitura e escrita)," \
-          "sua resposta deve ser em formato json/dict usando chave valor, terão 6 chaves:" \
-          "pergunta, resposta1, resposta2, resposta3, resposta4, resposta_certa." \
-          "Em resposta_certa deve conter o valor correto (não pode ser a chave, tem que ser o valor)",
+  store=True,
+)
 
-          store=True,
-        )
+#avaliando o tipo de dado (pegando o dado em string e passando para dict, e salvando em uma variavel)
+resposta_gpt = eval(response.output_text)
 
-        try:
-            resposta_gpt = json.loads(response.output_text)
-        except:
-            resposta_gpt = eval(response.output_text)
-            
-        return {
-            "pergunta": resposta_gpt.get("pergunta", "Qual é a primeira letra da palavra MAÇÃ?"),
-            "opcoes": [
-                resposta_gpt.get("resposta1", "M"),
-                resposta_gpt.get("resposta2", "A"),
-                resposta_gpt.get("resposta3", "E"),
-                resposta_gpt.get("resposta4", "B")
-            ],
-            "correta": resposta_gpt.get("resposta_certa", "M")
-        }
-    except Exception as e:
-        print(f"Erro ao gerar pergunta com IA: {e}")
-        # Fallback question em caso de erro da API
-        return {
-            "pergunta": "Qual é a primeira letra da palavra BOLA?",
-            "opcoes": ["B", "P", "D", "M"],
-            "correta": "B"
-        }
+#pegando o valor de cada chave presente no dicionario(coleção contendo as informações enviadas pelo chat gpt)
+pergunta_quiz = resposta_gpt["pergunta"]
+resposta1_quiz = resposta_gpt["resposta1"]
+resposta2_quiz = resposta_gpt["resposta2"]
+resposta3_quiz = resposta_gpt["resposta3"]
+resposta4_quiz = resposta_gpt["resposta4"]
+resposta_certa_quiz = resposta_gpt["resposta_certa"]
+
+#print(f"Apergunta é: {pergunta_quiz}")
+#print(f"A opção 1 é: {resposta1_quiz}")
+#print(f"A opção 2 é: {resposta2_quiz}")
+#print(f"A opção 3 é: {resposta3_quiz}")
+#print(f"A opção 4 é: {resposta4_quiz}")
+#print(f"A resposta correta é: {resposta_certa_quiz}")
+
+#print(resposta_gpt)
+
