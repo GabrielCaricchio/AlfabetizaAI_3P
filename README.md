@@ -99,3 +99,7 @@ Linux / macOS
 ### Para iniciar o sistema
 
     Dependendo do desafio, há na pasta ou um arquivo "main.py" ou um "run.py" , esses arquivos são os responsaveis por inicializar o sistema, basta dar play neles e o sistema começa a funcionar, logo em seguida basta clicar no link que aparecer no terminal e será direcionado para o site.
+
+### Observação
+    Dentro da pasta de prototipo terá uma subpasta ai nela crie um arquivo .env e coloque sua chave de API da OpenAI
+    coloque desta maneira no arquivo .env : OPENAI_API_KEY = "sua chave de API aqui"
