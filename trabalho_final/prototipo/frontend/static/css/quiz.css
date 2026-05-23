@@ -1,0 +1,94 @@
+    body {
+        background-image: url("../images/download.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'serif';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        }
+
+  #game-container {
+            background: white;
+            padding: 30px;
+            border-radius: 50px;
+            border: 10px solid #e16a49; /* Borda vermelha */
+            text-align: center;
+            box-shadow: 0 15px 0 #d32f2f;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #5271FF;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px #FFDE59;
+            margin-bottom: 10px;
+        }
+
+        #display-emoji {
+            font-size: 100px;
+            margin: 20px 0;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #7ED957; /* Verde */
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 2rem;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 8px 0 #45a049;
+        }
+
+        button:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #45a049;
+        }
+
+        button:hover {
+            background-color: #FF914D; /* Laranja ao passar o mouse */
+        }
+
+        #message {
+            height: 30px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #FF914D;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }

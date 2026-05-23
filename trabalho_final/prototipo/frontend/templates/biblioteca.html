@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livro Premium 📖</title>
+<link rel="stylesheet" href= "{{url_for('static', filename='css/biblioteca.css')}}">
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+</head>
+
+<body>
+
+<h1>Hora da Leitura</h1>
+<h2>Hora de mergulhar em novas histórias e deixar a imaginação te levar 📖✨</h2>
+
+<div class="estante">
+    <div class="livro" onclick="abrirLivro(0)">
+        <img src="{{url_for('static', filename='images/Cigarra.jpg')}}">
+        <h3>A Cigarra e a Formiga</h3>
+    </div>
+</div>
+
+<div id="modal">
+    <span class="close" onclick="fecharLivro()">&times;</span>
+
+    <div id="book"></div>
+
+    <div class="controls">
+        <button onclick="voltar()">⬅️</button>
+        <button onclick="avancar()">➡️</button>
+    </div>
+</div>
+
+<audio id="som" src="https://www.soundjay.com/misc/sounds/page-flip-01a.mp3"></audio>
+
+<script>
+
+    const historias = [
+{
+    titulo:"A Cigarra e a Formiga",
+    paginas:[
+        {
+            texto: "Era uma vez uma cigarra que cantava alegremente e uma formiga trabalhadora. Ambas viviam em harmonia, cada uma à sua maneira, mas com visões muito diferentes sobre a vida. A cigarra, sempre alegre e despreocupada, passava seus dias cantando e se divertindo, sem se preocupar com o futuro. Ela adorava o sol e a brisa suave enquanto cantava melodias que ecoavam pela floresta, encantando todos os animais que a ouviam. ",
+            imagem: "{{url_for('static', filename='images/c1.png')}}"
+        },
+        {
+            texto: "Já a formiga, sempre responsável e dedicada, passava seus dias trabalhando muito, coletando comida e organizando seu formigueiro. Ela acreditava que o trabalho duro era importante para uma vida tranquila e segura, e não tinha tempo para diversão e canções. O tempo passou e as estações do ano começaram a mudar. O clima quente e ensolarado deu lugar ao frio e à chuva, anunciando a chegada do inverno. A cigarra, que nunca se preocupou em guardar comida para os tempos difíceis, logo começou a sentir fome e frio.",
+            imagem: "{{url_for('static', filename='images/c2.jpg')}}"
+
+        },
+        {
+            texto: "Desesperada, a cigarra procurou a formiga em busca de ajuda. Tremendo e já se sentindo fraca, ela implorou: - Por favor, formiga, me ajude! Estou com fome e com frio, e não tenho onde me abrigar. Poderia me dar um pouco de comida e um lugar para me aquecer? A formiga, apesar de sua natureza diligente e focada no trabalho, sentiu compaixão pela cigarra sofrida. Ela respondeu: - Cigarra, durante todo o verão, enquanto eu trabalhava duro para guardar comida e construir um abrigo para enfrentar o inverno, você cantava e se divertia sem se preocupar com o amanhã. Mesmo assim, vou ajudá-la.",
+            imagem: "{{url_for('static', filename='images/c3.jpg')}}"
+        },
+        {
+            texto: "Então, a formiga generosa compartilhou sua comida e abriu as portas de seu formigueiro para a cigarra. Agradecida e arrependida, a cigarra prometeu aprender com a formiga e, a partir daquele dia, passou a se dedicar também ao trabalho, sem deixar de cantar e alegrar a floresta com suas melodias. ",
+            imagem: "{{url_for('static', filename='images/c4.jpg')}}"
+        },
+        {
+            texto: "A história ensina uma lição importante sobre como é bom aproveitar a vida e se divertir, mas que também é muito importante trabalhar e se preparar para o futuro. A cigarra passava o tempo todo cantando e se divertindo, sem se preocupar com o que poderia acontecer no futuro. Já a formiga trabalhava muito, guardando comida e construindo um abrigo para enfrentar os tempos difíceis.",
+            imagem: "{{url_for('static', filename='images/c5.png')}}"
+        },
+
+        {
+            texto: "No final da história, quando chegou o inverno e a cigarra se viu com fome e frio, a formiga ajudou a cigarra, mesmo tendo trabalhado muito para se preparar para o inverno. A história ensina que é importante ter equilíbrio na vida, entre diversão e trabalho, para que possamos viver felizes e seguros. E também nos mostra que ser gentil e ajudar os outros é muito importante, mesmo quando eles não agiram da melhor maneira antes.",
+            imagem: "{{url_for('static', filename='images/c6.png')}}"
+        },
+
+        {
+            texto: "Quem se prepara hoje, vive melhor amanhã.",
+            imagem: "{{url_for('static', filename='images/c7.png')}}"
+            
+        }
+    ]
+}
+];
+
+
+
+let pageFlip = null;
+
+function abrirLivro(index){
+    const modal = document.getElementById("modal");
+    const container = document.getElementById("book");
+
+    modal.style.display = "flex";
+    container.innerHTML = "";
+
+    const historia = historias[index];
+
+    // CAPA
+    const capa = document.createElement("div");
+    capa.classList.add("page","cover");
+    capa.innerHTML = historia.titulo;
+    container.appendChild(capa);
+
+    // PÁGINAS
+   historia.paginas.forEach(pagina=>{
+    const page = document.createElement("div");
+    page.classList.add("page");
+
+    page.innerHTML = `
+        <img src="${pagina.imagem}" class="img-pagina">
+        <p>${pagina.texto}</p>
+    `;
+
+    container.appendChild(page);
+});
+
+
+    // CONTRACAPA
+    const contra = document.createElement("div");
+    contra.classList.add("page","cover");
+    contra.innerHTML = "Fim 📖";
+    container.appendChild(contra);
+
+    // 🔥 ESPERA RENDERIZAR (CORREÇÃO DO BUG)
+    setTimeout(() => {
+
+        pageFlip = new St.PageFlip(container,{
+            width:400,
+            height:550,
+            size:"fixed",
+            showCover:true,
+            maxShadowOpacity:0.5,
+            mobileScrollSupport:false
+        });
+
+        pageFlip.loadFromHTML(container.querySelectorAll(".page"));
+
+        pageFlip.on("flip",()=>{
+            tocarSom();
+        });
+
+    }, 50);
+}
+
+function mostrarPagina(pagina) {
+    const container = document.querySelector('.pagina');
+
+    container.innerHTML = `
+        <img src="${pagina.imagem}" class="imagem-pagina">
+        <p>${pagina.texto}</p>
+    `;
+}
+
+
+function avancar(){
+    if(pageFlip) pageFlip.flipNext();
+}
+
+function voltar(){
+    if(pageFlip) pageFlip.flipPrev();
+}
+
+function fecharLivro(){
+    document.getElementById("modal").style.display="none";
+
+    if(pageFlip){
+        pageFlip.destroy(); // 🔥 evita bug ao reabrir
+        pageFlip = null;
+    }
+}
+
+function tocarSom(){
+    const som = document.getElementById("som");
+    som.currentTime = 0;
+    som.play();
+}
+</script>
+
+</body>
+</html>

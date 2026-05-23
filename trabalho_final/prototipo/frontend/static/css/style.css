@@ -1,0 +1,280 @@
+
+body{
+  margin:0;
+  font-family:"MinhaFonte", serif;
+  background-color: #f0f0e1b7;
+}
+
+header{
+  box-shadow:0 0 5px black;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:150px;
+}
+
+
+.logo{
+  width:350px;
+  height: 200px;
+  margin-top:70px;
+  margin-left: -45px;
+}
+
+figure{
+  display:flex;
+  align-items:center;
+}
+
+.l1{ color:#ff4d4dc5; }
+.l2{ color:#ff914dd0; }
+.l3{ color:#ffd34dcc; }
+.l4{ color:#29db65c2; }
+.l5{ color:#4dc4ffdc; }
+.l6{ color:#7a4dffcb; }
+.l7{ color:#ff4df3c2; }
+.l8{ color:#ff4d4dc0; }
+.l9{ color:#ff914dd8; }
+.l10{ color:#ffd34dde; }
+.l11{ color:#4dc4ffd5; }
+.l12{ color:#7a4dffce; }
+
+figcaption{
+  position: relative;
+  left: -140px;
+}
+
+figcaption{
+  font-weight:bold;
+  font-size:42px;
+  letter-spacing:1px;
+  white-space: nowrap;
+
+  text-shadow:
+  1px 1px 0 #ffffff,
+  -1px -1px 0 #ffffff,
+  2px 2px 3px rgba(0, 0, 0, 0),
+  -2px -2px 3px rgba(0,0,0,0.2);
+}
+
+figcaption span{
+  display:inline-block;
+}
+
+figcaption span:hover{
+  transform: scale(1.2);
+  display:inline-block;
+}
+
+.ia{
+  position:absolute;
+  top:-12px;
+  right:-29px;
+  font-size:25px;
+  font-weight:bold;
+  color:#009be9f1;
+
+  text-shadow:
+  1px 1px 0 #ffffff,
+  -1px -1px 0 #ffffff,
+  2px 2px 3px rgba(0,0,0,0.2);
+
+}
+
+
+ul{
+  display:flex;
+  list-style:none;
+  gap:20px;
+  padding-right:30px;
+}
+
+a{
+  color: #ffffff;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-weight:bold;
+  border:3px solid #eec1e6;
+  background-color:  #f78fcc;
+  border-radius:6px;
+  padding:5px 10px;
+
+}
+
+a:hover{
+  background-color: #ff6fd48f;
+}
+
+section{
+  padding:80px 40px;
+}
+
+.hero-section{
+  background-image: url("../images/download.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.site-activities{
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+.site-activities::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../images/h3.jpg");
+    background-size: cover;
+    background-position: center;
+
+    filter: blur(0.5px);
+    transform: scale(1.1);
+
+    z-index: -1;
+
+}
+
+
+.support{
+  background-color: #f0f0e1b7;
+}
+
+.comeco{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.balao{
+  max-width:400px;
+  border:4px solid #0100022c;
+  border-radius:10px;
+  text-align:center;
+  padding:40px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.1);
+  background-image: url('../images/h3.jpg');
+  filter: drop-shadow(3px 5px 5px rgba(0,0,0,0.5));
+}
+
+.personagem{
+  max-width:450px;
+  height:auto;
+  transition:transform 0.3s;
+  margin-right: -100px;
+
+}
+
+.personagem:hover{
+  transform:scale(1.1);
+}
+
+.container{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:rgb(241, 241, 241);
+  border-radius:15px;
+  padding:30px;
+  width:220px;
+  text-align: center;
+  box-shadow: 10px 12px rgba(0, 0, 0, 0.555);
+  transition:transform 0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{
+  width:90px;
+}
+
+#leitura{
+  width:320px;
+  height:160px;
+  margin: -10px;
+
+}
+
+#abc{
+  width:320px;
+  height:160px;
+  margin-left: -45px;
+
+}
+
+#grafico{
+  width:320px;
+  height:160px;
+  margin-left: -45px;
+
+}
+
+
+.forms-support{
+  max-width:500px;
+}
+
+fieldset{
+  background-color:#E0D5FF;
+  border:none;
+  border-radius:10px;
+  width: 500px;
+  background-color: #c8bde0;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 8px 8px 0px #555;
+}
+
+input, textarea{
+  width:100%;
+  padding:8px;
+  margin-top:5px;
+  margin-bottom:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  color:rgb(7, 0, 0);
+  background-image: url("../images/download.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.titulo{
+    color: #000000f1;
+    text-align: center;
+    font-size: 40px;
+    margin: 40px 0;
+    height: 90px;
+    text-shadow:
+  1px 1px 0 #ffffff8f,
+  -1px -1px 0 #ffffff7e,
+  2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+#personagem {
+  filter: drop-shadow(3px 5px 5px rgba(0,0,0,0.5));
+}

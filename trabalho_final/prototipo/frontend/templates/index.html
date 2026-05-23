@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlfabetizaIA</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+
+      <figure>
+        <img class="logo" src="{{url_for('static', filename='images/logo.webp')}}" alt="Logoabc">
+
+        <figcaption>
+          <span class="l1">A</span>
+          <span class="l2">L</span>
+          <span class="l3">F</span>
+          <span class="l4">A</span>
+          <span class="l5">B</span>
+          <span class="l6">E</span>
+          <span class="l7">T</span>
+          <span class="l8">I</span>
+          <span class="l9">Z</span>
+          <span class="l10">A</span>
+          <span class="ia">IA</span>
+        </figcaption>
+
+      </figure>
+
+
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#o-que-fazemos">Hora de Aprender</a></li>
+        <li><a href="#suporte">Suporte</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero-section" id="inicio">
+
+      <div class="comeco">
+
+        <div class="balao">
+          <h2 style="color:#000000; text-shadow:
+  1px 1px 0 #ffffffe0,
+  -1px -1px 0 #ffffffad,
+  2px 2px 3px rgba(0, 0, 0, 0),
+  -2px -2px 3px rgba(0,0,0,0.2);">✨ Vamos aprender juntos!</h2>
+
+          <p style="color:#000000; font-weight:bold;
+text-shadow:
+  1px 1px 0 #ffffff,
+  -1px -1px 0 #ffffffbe,
+  2px 2px 3px rgba(0, 0, 0, 0),
+  -2px -2px 3px rgba(0,0,0,0.2);">
+            Neste espaço você encontrará histórias, atividades e desafios que vão ajudar no desenvolvimento da leitura e
+            da escrita.
+            Prepare-se para aprender de forma divertida!
+          </p>
+        </div>
+
+        <figure>
+          <img class="personagem" src="{{url_for('static', filename='images/letra-sorrindo.png')}}"
+            alt="personagem em formato de letra A sorrindo" id="personagem">
+        </figure>
+
+      </div>
+
+    </section>
+
+
+    <section class="site-activities" id="o-que-fazemos">
+
+      <h2 class="titulo">Aprenda, descubra e divirta-se!</h2>
+
+      <div class="container">
+
+        <div class="card">
+          <img src="{{url_for('static', filename='images/abc.png')}}" alt="Icone de ABC" id="leitura">
+          <h3>Contos e Fabulas</h3>
+          <p>Leia contos e fábulas divertidas enquanto aprende novas palavras.</p>
+          <a href="/biblioteca">Clique aqui</a>
+        </div>
+
+        <div class="card">
+          <img src="{{url_for('static', filename='images/abc-games.png')}}" alt="icone de blocos de ABC" id="abc">
+          <h3>Atividades Interativas</h3>
+          <p>Pratique letras, sílabas e palavras com atividades divertidas que ajudam no desenvolvimento da leitura.</p>
+          <a href="/quiz">Clique aqui</a>
+        </div>
+
+        <div class="card">
+          <img src="{{url_for('static', filename='images/grafico.png')}}" alt="icone grafico" id="grafico">
+          <h3>🌟 Minha Evolução</h3>
+          <p>Veja seus resultados, conquistas e descubra o quanto você já aprendeu.</p>
+          <a href="/registrar">Clique aqui</a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="support" id="suporte">
+
+      <h2>Precisa de ajuda?</h2>
+
+      <p>
+        Se você tiver alguma dúvida, sugestão ou encontrou algum problema no site,
+        envie uma mensagem para nossa equipe. Ficaremos felizes em ajudar!
+      </p>
+
+      <form class="forms-support">
+
+        <fieldset>
+
+          <div>
+            <label>Nome:</label>
+            <input type="text" placeholder="Digite seu nome aqui" required>
+          </div>
+
+          <div>
+            <label>Email:</label>
+            <input type="email" placeholder="Digite seu email aqui" required>
+          </div>
+
+          <div>
+            <label>Telefone:</label>
+            <input type="tel" placeholder="Digite seu telefone aqui" required>
+          </div>
+
+          <div>
+
+            <h3>Objetivo da mensagem</h3>
+
+            <div>
+              <input type="radio" name="objetivo">
+              <label>Sugestão</label>
+            </div>
+
+            <div>
+              <input type="radio" name="objetivo">
+              <label>Erro</label>
+            </div>
+
+            <div>
+              <input type="radio" name="objetivo">
+              <label>Dúvida</label>
+            </div>
+
+          </div>
+
+          <div>
+            <br>
+            <label>Mensagem:</label>
+            <textarea placeholder="Digite sua mensagem aqui" required></textarea>
+          </div>
+
+          <input type="submit" value="Enviar">
+
+        </fieldset>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <p>© 2026 AlfabetizaIA</p>
+
+  </footer>
+
+</body>
+
+</html>

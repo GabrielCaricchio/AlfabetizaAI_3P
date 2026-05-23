@@ -1,0 +1,113 @@
+body{
+    margin:0;
+    background-image: url("../images/download.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Georgia, serif;
+    text-align:center;
+}
+
+/* ESTANTE */
+.estante{
+     background:rgb(241, 241, 241);
+     border-radius:15px;
+     padding:50px;
+     width:180px;
+     height: 280px;
+     margin-left: 60px;
+     text-align: center;
+     box-shadow: 10px 12px rgba(0, 0, 0, 0.555);
+     transition:transform 0.3s;
+
+}
+
+.livro{cursor:pointer;}
+.livro:hover{transform:scale(1.05);}
+.livro img{width:100%; border-radius:10px;}
+
+/* MODAL */
+#modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* LIVRO */
+#book{
+    width:800px;
+    height:550px;
+    margin:auto;
+}
+
+/* PÁGINAS */
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fffdf7;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden; /* 🔥 MUITO IMPORTANTE */
+}
+
+.img-pagina {
+    width: 90%;
+    max-height: 200px; /* 🔥 LIMITA ALTURA */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.page p {
+    font-size: 15px;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+/* DIVISÃO */
+.page:nth-child(even){
+    border-left:10px solid rgba(0,0,0,0.2);
+}
+
+/* CAPA */
+.cover{
+    background-image: url("../images/capa.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color:rgba(255, 255, 255, 0);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+}
+
+/* CONTROLES */
+.controls{margin-top:20px;}
+
+button{
+    padding:10px 15px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    background:#7a8c66;
+    color:white;
+    cursor:pointer;
+}
+
+/* FECHAR */
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:2rem;
+    color:red;
+    cursor:pointer;
+}
