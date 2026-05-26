@@ -75,7 +75,7 @@
     </tr>
   </table>
 </div>
-</center>
+
 ---
 
 ###### Ferramentas utilizadas:
