@@ -1,4 +1,4 @@
-<div>
+<div align="center">
   <h1>Trabalho de Arquitetura de Software</h1>
   <h4>Professor: Cloves Rocha</h4>
 
