@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title> Alfabetização Hospitalar </title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Olá Estudante!</h1>
+        <h2>Bons Estudos</h2>
+
+        <form action="/atividade" method="post" class="formulario">
+
+            <div class="campo">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" required>
+            </div>
+
+            <div class="campo">
+                <label for="serie">Série:</label>
+                <select name="serie">
+                    <option value="1">1º Ano</option>
+                    <option value="2">2º Ano</option>
+                    <option value="3">3º Ano</option>
+                </select>
+            </div>
+
+            <button type="submit">Iniciar Atividade</button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

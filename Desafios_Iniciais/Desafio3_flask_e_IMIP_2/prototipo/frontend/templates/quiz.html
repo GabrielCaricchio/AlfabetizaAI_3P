@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura das Letras! 🎈</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}?v=1">
+
+</head>
+<body>
+
+<div id="game-container">
+    <h1>Qual é a letra?</h1>
+    <div id="display-emoji">🍎</div>
+    
+    <div class="options" id="buttons">
+        </div>
+
+    <p id="message"></p>
+</div>
+
+<script>
+    /* JavaScript - A Lógica do Jogo */
+    const challenges = [
+        { emoji: '🍎', letter: 'M', options: ['M', 'B', 'C'] },
+        { emoji: '🐶', letter: 'C', options: ['P', 'C', 'G'] }, // C de Cão
+        { emoji: '🐘', letter: 'E', options: ['I', 'O', 'E'] },
+        { emoji: '🐈', letter: 'G', options: ['G', 'L', 'M'] }, // G de Gato
+        { emoji: '🍦', letter: 'S', options: ['S', 'V', 'R'] }  // S de Sorvete
+    ];
+
+    let currentLevel = 0;
+
+    function loadLevel() {
+        const stage = challenges[currentLevel];
+        document.getElementById('display-emoji').innerText = stage.emoji;
+        const btnContainer = document.getElementById('buttons');
+        btnContainer.innerHTML = '';
+        document.getElementById('message').innerText = "Escolha a letra inicial!";
+        document.getElementById('message').style.color = "black";
+
+        stage.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt);
+            btnContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selected) {
+        const correct = challenges[currentLevel].letter;
+        const msg = document.getElementById('message');
+
+        if (selected === correct) {
+            msg.innerText = "PARABÉNS! Você acertou! 🌟";
+            msg.style.color = "#7ED957";
+            
+            setTimeout(() => {
+                currentLevel++;
+                if (currentLevel < challenges.length) {
+                    loadLevel();
+                } else {
+                    document.getElementById('game-container').innerHTML = "<h1>VOCÊ VENCEU! 🏆</h1><button onclick='location.reload()'>Jogar de Novo</button>";
+                }
+            }, 1500);
+        } else {
+            msg.innerText = "Tente de novo! Você consegue! 💪";
+            msg.style.color = "#FF5757";
+        }
+    }
+
+    // Iniciar o jogo
+    loadLevel();
+</script>
+
+</body>
+</html>

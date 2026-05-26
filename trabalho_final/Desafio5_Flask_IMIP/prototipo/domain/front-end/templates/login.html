@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AlfabetizaIA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>🔐 Entrar no AlfabetizaIA</h2>
+                <p>Que bom ter você de volta! Faça seu login.</p>
+            </div>
+
+            <!-- Mensagens de Flash -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="alert-container">
+                        {% for categoria, mensagem in messages %}
+                            <div class="alert alert-{{ categoria }}">{{ mensagem }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <div class="form-group">
+                    <label class="form-label" for="email">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="exemplo@email.com" required autofocus>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-checkbox">
+                        <input type="checkbox" name="lembrar" id="lembrar">
+                        Lembrar de mim
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+
+            <div class="auth-footer">
+                Não tem uma conta? <a href="{{ url_for('auth.registro') }}">Cadastre-se</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

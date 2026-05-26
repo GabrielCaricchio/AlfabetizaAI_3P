@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livro Premium 📖</title>
+<link rel="stylesheet" href= "{{url_for('static', filename='css/biblioteca.css')}}">
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+</head>
+
+<body>
+
+<h1>Hora da Leitura</h1>
+<h2>Hora de mergulhar em novas histórias e deixar a imaginação te levar</h2>
+
+
+
+    <div class="estante">
+    <div class="livro" onclick="abrirLivro(0)">
+        <img src="{{url_for('static', filename='images/Cigarra.jpg')}}">
+        <h3>A Cigarra e a Formiga</h3>
+    </div>
+
+     <!-- SEGUNDO LIVRO -->
+<div class="livro" onclick="abrirLivro(1)">
+        <img src="{{url_for('static', filename='images/chapeu1.jpg')}}">
+        <h3>Chapeuzinho Vermelho</h3>
+</div>
+
+    <!-- TERCEIRO LIVRO -->
+<div class="livro" onclick="abrirLivro(2)">
+        <img src="{{url_for('static', filename='images/pinoquio.jpg')}}">
+        <h3>Pinóquio</h3>
+</div>
+</div>
+
+
+
+
+<div id="modal">
+    <span class="close" onclick="fecharLivro()">&times;</span>
+
+    <div id="book"></div>
+
+    <div class="controls">
+        <button onclick="voltar()">⬅️</button>
+        <button onclick="avancar()">➡️</button>
+    </div>
+</div>
+
+<audio id="som" src="https://www.soundjay.com/misc/sounds/page-flip-01a.mp3"></audio>
+
+<script>
+
+    const historias = [
+{
+    titulo:"A Cigarra e a Formiga",
+    paginas:[
+        {
+            texto: "Era uma vez uma cigarra que cantava alegremente e uma formiga trabalhadora. Ambas viviam em harmonia, cada uma à sua maneira, mas com visões muito diferentes sobre a vida. A cigarra, sempre alegre e despreocupada, passava seus dias cantando e se divertindo, sem se preocupar com o futuro. Ela adorava o sol e a brisa suave enquanto cantava melodias que ecoavam pela floresta, encantando todos os animais que a ouviam. ",
+            imagem: "{{url_for('static', filename='images/c1.png')}}"
+        },
+        {
+            texto: "Já a formiga, sempre responsável e dedicada, passava seus dias trabalhando muito, coletando comida e organizando seu formigueiro. Ela acreditava que o trabalho duro era importante para uma vida tranquila e segura, e não tinha tempo para diversão e canções. O tempo passou e as estações do ano começaram a mudar. O clima quente e ensolarado deu lugar ao frio e à chuva, anunciando a chegada do inverno. A cigarra, que nunca se preocupou em guardar comida para os tempos difíceis, logo começou a sentir fome e frio.",
+            imagem: "{{url_for('static', filename='images/c2.jpg')}}"
+
+        },
+        {
+            texto: "Desesperada, a cigarra procurou a formiga em busca de ajuda. Tremendo e já se sentindo fraca, ela implorou: - Por favor, formiga, me ajude! Estou com fome e com frio, e não tenho onde me abrigar. Poderia me dar um pouco de comida e um lugar para me aquecer? A formiga, apesar de sua natureza diligente e focada no trabalho, sentiu compaixão pela cigarra sofrida. Ela respondeu: - Cigarra, durante todo o verão, enquanto eu trabalhava duro para guardar comida e construir um abrigo para enfrentar o inverno, você cantava e se divertia sem se preocupar com o amanhã. Mesmo assim, vou ajudá-la.",
+            imagem: "{{url_for('static', filename='images/c3.jpg')}}"
+        },
+        {
+            texto: "Então, a formiga generosa compartilhou sua comida e abriu as portas de seu formigueiro para a cigarra. Agradecida e arrependida, a cigarra prometeu aprender com a formiga e, a partir daquele dia, passou a se dedicar também ao trabalho, sem deixar de cantar e alegrar a floresta com suas melodias. ",
+            imagem: "{{url_for('static', filename='images/c4.jpg')}}"
+        },
+        {
+            texto: "A história ensina uma lição importante sobre como é bom aproveitar a vida e se divertir, mas que também é muito importante trabalhar e se preparar para o futuro. A cigarra passava o tempo todo cantando e se divertindo, sem se preocupar com o que poderia acontecer no futuro. Já a formiga trabalhava muito, guardando comida e construindo um abrigo para enfrentar os tempos difíceis.",
+            imagem: "{{url_for('static', filename='images/c5.png')}}"
+        },
+
+        {
+            texto: "No final da história, quando chegou o inverno e a cigarra se viu com fome e frio, a formiga ajudou a cigarra, mesmo tendo trabalhado muito para se preparar para o inverno. A história ensina que é importante ter equilíbrio na vida, entre diversão e trabalho, para que possamos viver felizes e seguros. E também nos mostra que ser gentil e ajudar os outros é muito importante, mesmo quando eles não agiram da melhor maneira antes.",
+            imagem: "{{url_for('static', filename='images/c6.png')}}"
+        },
+
+        {
+            texto: "Quem se prepara hoje, vive melhor amanhã.",
+            imagem: "{{url_for('static', filename='images/c7.png')}}"
+            
+        }
+    ]
+},
+
+{
+    titulo:"Chapeuzinho Vermelho",
+    paginas:[
+        {
+            texto:"\nEra uma vez uma menina que todos chamavam de Chapeuzinho Vermelho por causa do capuz de veludo vermelho que ela usava. Ela vivia feliz com sua mãe e seu pai, que a amavam muito, assim como todos, porque ela era gentil e obediente. Chapeuzinho Vermelho tinha ainda uma vovó querida, que morava na beira da floresta. Um dia, sua mãe disse: “Chapeuzinho, a vovó está doente e precisa de algo bom para comer. Coloquei um bolo e vinho de dente-de-leão na cesta. Vá e leve para ela, mas tome cuidado para não sair do caminho da floresta e não pare para falar com estranhos!”",
+            imagem:"{{url_for('static', filename='images/cp1.png')}}"
+        },
+
+        {
+            texto:"Chapeuzinho Vermelho obedeceu à mãe e partiu para a jornada. Ela seguiu o caminho bem trilhado da floresta, até que notou, ao longo do caminho, lindos morangos vermelhos que exalavam um aroma tentador. Ela provou um, depois outro, e gostou tanto que começou a procurar por todos os lados para colher o máximo possível. Durante a colheita, ela foi mais fundo na floresta e, de repente, um lobo apareceu na sua frente! \n“Para onde você vai, Chapeuzinho Vermelho?”, perguntou o lobo, tentando soar amigável. \n“Vou visitar minha vovozinha, que está doente. Tenho que levar para ela uma cesta com bolo e vinho”, respondeu Chapeuzinho Vermelho.",
+            imagem:"{{url_for('static', filename='images/cp2.png')}}"
+        },
+
+        {
+            texto: "“Isso é muito gentil da sua parte. E onde mora sua vovó?”, perguntou o lobo em seguida. \n“Na beira da floresta, em uma casinha com telhado vermelho”, disse Chapeuzinho Vermelho. “Ela cuida dos animais da floresta, no inverno leva comida para os pássaros e os trata quando estão doentes ou feridos.” \n“Ah, então eu conheço esse lugar. E sabe de uma coisa? Vou te mostrar um atalho para chegar lá mais rápido. Siga por este caminho à esquerda e depois vire à direita no grande carvalho. Você verá que será muito mais curto do que por aqui”, mentiu o lobo para Chapeuzinho Vermelho, com um sorriso astuto.",
+            imagem: "{{url_for('static', filename='images/cp3.jpg')}}"
+            
+        },
+
+        {
+            texto: "“Sério? Isso é muito gentil da sua parte. Obrigada.”, agradeceu Chapeuzinho Vermelho, seguindo o conselho do lobo. \nMas o Lobo rapidamente tomou o caminho principal para a casa da vovó. Chegando lá, ele bateu na porta e imitou Chapeuzinho Vermelho: “Vovó, sou eu, Chapeuzinho Vermelho. Trouxe algo gostoso para você comer.” \nA Vovó pensou que era realmente sua neta e disse: “Entre, minha criança, a porta está destrancada.” \nO Lobo entrou, viu a vovó deitada na cama e num instante pulou sobre ela. A vovó ficou assustada e começou a gritar por socorro.",
+            imagem: "{{url_for('static', filename='images/cp4.png')}}"
+            
+        },
+
+         {
+            texto: "Mas o lobo rapidamente a engoliu inteira e, em seguida, se deitou na cama no lugar dela. Ele vestiu o gorro da vovó, colocou seus óculos e se cobriu com o edredom. \nDepois de algum tempo, finalmente chegou a Chapeuzinho Vermelho, que descobriu que o atalho do lobo era, na verdade, bem mais longo do que o caminho principal. Ela bateu na porta e chamou: “Vovó, sou eu, Chapeuzinho. Trouxe algo gostoso para você comer.” O lobo, disfarçado de vovó, com a voz mais doce que conseguiu fazer, respondeu: “Entre, minha criança, a porta está destrancada.” \nChapeuzinho Vermelho entrou e imediatamente perguntou à vovó por que a voz dela estava tão estranha.",
+            imagem: "{{url_for('static', filename='images/cp5.png')}}"
+            
+        },
+
+        {
+            texto: "“É por causa do resfriado, minha criança”, disse o lobo disfarçado, de forma abatida e rouca. Chapeuzinho Vermelho foi até a cama para ver a vovó deitada lá, mas ela não parecia a mesma, não só pela voz, mas também pela aparência: tinha orelhas grandes, olhos grandes e dentes grandes. \n“Por que essas orelhas tão grandes, vovó?”, perguntou Chapeuzinho Vermelho. \n“É para te ouvir melhor”, respondeu o lobo. \n“E por que esses olhos tão grandes, vovó?”, perguntou Chapeuzinho Vermelho. \n“É para te ver melhor”, respondeu o lobo. \n“E por que esses dentes tão grandes, vovó?”, continuou a perguntar Chapeuzinho.",
+            imagem: "{{url_for('static', filename='images/cp6.png')}}"
+            
+        },
+
+        {
+            texto: "“É para te comer melhor!”, rosnou o lobo, lançando-se sobre Chapeuzinho Vermelho e a engolindo inteira. \nDepois de duas refeições tão substanciais, o lobo mal conseguia se mover e foi tomado por um grande cansaço. Ele tirou os óculos e o gorro da vovó e se jogou de volta na cama, onde imediatamente adormeceu profundamente. Ele roncava tanto que a casinha toda tremia. \nLogo depois, um caçador passou pela casinha durante sua patrulha regular pela floresta",
+            imagem: "{{url_for('static', filename='images/cp7.png')}}"
+            
+        },
+
+        {
+            texto: "O ronco alto o parou imediatamente. Isso não poderia ser a vovó! Quem então poderia estar lá? O caçador espiou pela janela da casinha, viu um enorme lobo na cama e desconfiou do que havia acontecido. Ele entrou, puxou o cobertor e olhou para a barriga inchada do lobo. E então o caçador puxou uma faca e, cuidadosamente, cortou a barriga do lobo. Para sua surpresa, não só a vovó saiu da barriga, mas também Chapeuzinho Vermelho. Felizmente, ambas estavam vivas e saudáveis. \nAs duas agradeceram muito ao caçador por ter salvado suas vidas e queriam retribuir com uma refeição. O caçador aceitou o convite com prazer, mas antes precisava cuidar do lobo.",
+            imagem: "{{url_for('static', filename='images/cp8.png')}}"
+            
+        },
+
+        {
+            texto: "O caçador arrastou o lobo para fora da cabana, encheu sua barriga cortada com pedras e a costurou. Depois voltou para a cabana e conversou com a avó e Chapeuzinho Vermelho enquanto tomavam vinho de dente-de-leão e comiam bolo. Antes de partir, ele ainda disse a Chapeuzinho Vermelho: “Você precisa ser cuidadosa, menina. Há muitas criaturas perigosas na floresta. Nunca confie em criaturas desconhecidas e mantenha-se nos caminhos conhecidos na floresta.” Chapeuzinho Vermelho prometeu que se lembraria disso. \nEnquanto isso, lá fora, o lobo acordou. Ele não conseguia entender muito bem onde estava e o que estava acontecendo, mas, antes de qualquer coisa, precisava saciar a enorme sede que sentia.",
+            imagem: "{{url_for('static', filename='images/cp9.png')}}"
+            
+        },
+
+        {
+            texto: "Ele rastejou o mais rápido que pôde até o riacho borbulhante que corria ali perto. Sua barriga estava extremamente pesada, ele pensou que talvez tivesse comido demais, que fosse por causa da vovó e da Chapeuzinho Vermelho. Quando chegou ao riacho, rapidamente se inclinou para saciar sua sede. Mas, infelizmente, sua barriga cheia de pedras o desequilibrou e ele caiu na água. E, assim, aquele vilão guloso afundou lentamente e não conseguiu mais nadar. \nE então, Chapeuzinho Vermelho ficou na casa da vovó até a noite e depois voltou direitinho pelo caminho para casa, para sua mamãe e seu papai. Felizmente, não havia mais nenhum lobo mau vagando pela floresta. E ela nunca mais saiu do caminho quando ia sozinha pela floresta visitar a vovó, como prometeu ao valente caçador.",
+            imagem: "{{url_for('static', filename='images/cp10.png')}}"
+            
+        }
+
+
+
+
+
+    ]
+},
+
+{
+    titulo:"Pinóquio",
+    paginas:[
+        {
+            texto:"Era uma vez um carpinteiro chamado Gepeto, que fabricava marionetes. Ele vivia sozinho e sonhava em ter um filho. Um dia, esculpiu um boneco de madeira muito bonito e o chamou de Pinóquio. \n“Ah, se o Pinóquio fosse um menino de verdade, e não de madeira…”, suspirou Gepeto, olhando para o céu estrelado. Ele acreditava que sua estrela da sorte brilhava sobre ele. \nNaquela noite, enquanto Gepeto dormia, uma estrela desceu do céu e se transformou em uma fada. \n“Vou realizar seu desejo, Gepeto…”, sussurrou a fada, balançando sua varinha mágica. Nesse momento, Pinóquio ganhou vida.",
+            imagem:"{{url_for('static', filename='images/pn1.png')}}"
+        },
+
+        {
+            texto:"“Estou vivo! Como um menino de verdade!”, exclamou Pinóquio, radiante. \n“Sim, mas você precisa ser honesto, sincero e corajoso. Saber distinguir o bem do mal, e fazer Gepeto feliz.”  \n“Mas como vou saber o que é bom e o que é ruim?”, perguntou Pinóquio. \n“Você precisa fazer boas escolhas”, instruiu a fada, antes de desaparecer. \nQuando Gepeto acordou na manhã seguinte, mal pôde acreditar: seu sonho tinha se tornado realidade. Ficou imensamente feliz por finalmente ter um filho. Pinóquio o ajudou nas tarefas, mas, depois de alguns dias, pediu para ir à escola.",
+            imagem:"{{url_for('static', filename='images/pn2.png')}}"
+        },
+
+        {
+            texto:"“Papai, eu também gostaria de ir à escola, como as outras crianças.”, disse Pinóquio. \nEntão Gepeto usou o pouco dinheiro que tinha guardado para comprar material escolar e livros. Pinóquio pegou tudo, agradeceu e partiu em direção à escola. \nNo caminho, ouviu uma música alegre. Curioso, desviou-se da estrada para descobrir de onde vinha aquele som. Um pouco adiante havia um circo. Encantado, Pinóquio quis entrar. \n“Você precisa comprar um ingresso.”, disse-lhe um homem do circo. \n“Mas eu não tenho dinheiro. Só esses livros escolares.” \nPinóquio, então, trocou os livros por um ingresso. Dentro do circo, marionetes de madeira apresentavam uma peça.",
+            imagem:"{{url_for('static', filename='images/pn3.png')}}"
+        },
+
+        {
+            texto:"Pinóquio, ao ver que eram tão parecidas com ele, subiu ao palco e se juntou a elas. O dono do circo ficou impressionado ao ver uma marionete que se mexia sozinha e decidiu mantê-la ali. Pegou Pinóquio e o trancou em uma gaiola. \nPinóquio explicou que não podia ficar, que precisava ir para a escola e que só estava curioso sobre o espetáculo. Agora estava arrependido e sabia que tinha feito algo errado. \n“Ah, menino, menino… Aqui estão seus livros, seu dinheiro… Pode ir embora.”, disse o homem. \nE então, soltou Pinóquio da gaiola. Pinóquio pegou os livros, agradeceu e correu para a escola. Agora ele sabia o erro que havia cometido e prometeu a si mesmo que, da próxima vez, faria a coisa certa.",
+            imagem:"{{url_for('static', filename='images/pn4.png')}}"
+        },
+
+        {
+            texto:"Logo depois, uma raposa esperta cruzou seu caminho. \n“Para onde você vai, garotinho?” \n“Para a escola.” \n“E para que serve a escola? Vou te mostrar um lugar mágico que você vai adorar.” \nE Pinóquio, mais uma vez, saiu do caminho certo e seguiu a raposa floresta adentro. Era, de fato, um lugar encantador. Doces e guloseimas por todos os lados, brinquedos e várias crianças do seu tamanho. \n“Quantos amigos para brincar!”, pensou entusiasmado. Mas, depois de algum tempo, sentiu algo estranho.",
+            imagem:"{{url_for('static', filename='images/pn5.png')}}"
+        },
+
+        {
+            texto:" Apalpou a cabeça e percebeu que suas orelhas haviam crescido e estavam cobertas de pelos! Olhou-se no espelho: tinha orelhas de burro! E também uma cauda! A floresta era enfeitiçada. Pinóquio havia acreditado de novo em alguém que não devia. Fugiu o mais rápido que pôde. \nAssim que saiu da floresta, suas orelhas e cauda desapareceram. Mas ele correu tanto que nem viu para onde ia. Só parou quando chegou à beira do mar. Foi então que ouviu passos e vozes atrás dele. \n“Com certeza é a raposa me seguindo!”, pensou. E sem hesitar, pulou na água. \nEnquanto nadava, tentava pensar em como sair daquela confusão.",
+            imagem:"{{url_for('static', filename='images/pn6.png')}}"
+        },
+
+        {
+            texto:". De repente, uma baleia surgiu, abriu a boca gigante e engoliu Pinóquio inteirinho!  \nDentro da barriga da baleia, havia um homem sentado, com olhar triste. \n“Papai? É você?”, gritou Pinóquio, correndo para os braços de Gepeto. \n“Meu Pinóquio! Como eu procurei por você! Onde esteve?” \n“Quando eu estava indo para a escola, fui atacado por ladrões, que me arrastaram para longe…”, começou a mentir. Mas, assim que terminou a frase, seu nariz cresceu um pouco. \n“E quando perceberam que eu era apenas um boneco, me jogaram no mar.”, continuou. E seu nariz cresceu ainda mais.",
+            imagem:"{{url_for('static', filename='images/pn7.png')}}"
+        },
+
+        {
+            texto:"“É verdade?”, perguntou Gepeto. \n“Sim…”, mentiu Pinóquio. E o nariz ficou tão comprido que mal cabia dentro da barriga da baleia. \nNaquele instante, Pinóquio sentiu vergonha. Percebeu que mentir era errado. Mesmo envergonhado, contou a verdade para Gepeto. \nAssim que terminou, seu nariz voltou ao tamanho normal. Gepeto, por sua vez, contou como saiu para procurá-lo. Quando não o encontrou em lugar nenhum, construiu uma jangada e foi para o mar. Foi então que a baleia o engoliu. \nAntes que pudessem conversar mais, a baleia adormeceu.",
+            imagem:"{{url_for('static', filename='images/pn8.png')}}"
+        },
+
+        {
+            texto:"Como ela roncava, Gepeto e Pinóquio aproveitaram e escaparam assim que ela abriu a boca. Eles voltaram para casa felizes por estarem juntos novamente. \nÀ noite, a fada apareceu novamente na casa deles. Ela quis saber como Pinóquio tinha se saído. Ele confessou que não soube distinguir o certo do errado. Tinha medo que a fada o transformasse em boneco outra vez, mas ela apenas sorriu. \n“Pelo menos agora você sabe o que é certo. Foi corajoso e sincero. No fim, percebeu que não se deve mentir. Aprender a distinguir o que é bom do que é ruim é algo que levamos a vida inteira aprendendo. Aprenda com seus erros e se torne um menino de verdade.”",
+            imagem:"{{url_for('static', filename='images/pn9.png')}}"
+        },
+
+        {
+            texto:"A fada balançou sua varinha mágica e Pinóquio transformou-se em um menino de verdade. Desde então, ele aprendeu a não confiar em qualquer um, a obedecer Gepeto e a nunca mais mentir. E assim, Gepeto e seu Pinóquio viveram felizes para sempre.",
+            imagem:"{{url_for('static', filename='images/pn10.png')}}"
+        }
+
+    ]
+}
+
+];
+
+
+
+
+let pageFlip = null;
+
+function abrirLivro(index){
+    const modal = document.getElementById("modal");
+    const container = document.getElementById("book");
+
+    modal.style.display = "flex";
+    container.innerHTML = "";
+
+    const historia = historias[index];
+
+    // CAPA
+    const capa = document.createElement("div");
+    capa.classList.add("page","cover");
+    capa.innerHTML = historia.titulo;
+    container.appendChild(capa);
+
+    // PÁGINAS
+   historia.paginas.forEach(pagina=>{
+    const page = document.createElement("div");
+    page.classList.add("page");
+
+    page.innerHTML = `
+        <img src="${pagina.imagem}" class="img-pagina">
+        <p>${pagina.texto}</p>
+    `;
+
+    container.appendChild(page);
+});
+
+
+    // CONTRACAPA
+    const contra = document.createElement("div");
+    contra.classList.add("page","cover");
+    contra.innerHTML = "Fim 📖";
+    container.appendChild(contra);
+
+    // 🔥 ESPERA RENDERIZAR (CORREÇÃO DO BUG)
+    setTimeout(() => {
+
+        pageFlip = new St.PageFlip(container,{
+            width:400,
+            height:550,
+            size:"fixed",
+            showCover:true,
+            maxShadowOpacity:0.5,
+            mobileScrollSupport:false
+        });
+
+        pageFlip.loadFromHTML(container.querySelectorAll(".page"));
+
+        pageFlip.on("flip",()=>{
+            tocarSom();
+        });
+
+    }, 50);
+}
+
+function mostrarPagina(pagina) {
+    const container = document.querySelector('.pagina');
+
+    container.innerHTML = `
+        <img src="${pagina.imagem}" class="imagem-pagina">
+        <p>${pagina.texto}</p>
+    `;
+}
+
+
+function avancar(){
+    if(pageFlip) pageFlip.flipNext();
+}
+
+function voltar(){
+    if(pageFlip) pageFlip.flipPrev();
+}
+
+function fecharLivro(){
+    document.getElementById("modal").style.display="none";
+
+    if(pageFlip){
+        pageFlip.destroy(); // 🔥 evita bug ao reabrir
+        pageFlip = null;
+    }
+
+    // Recarrega a página após 300ms para permitir animação
+    setTimeout(() => {
+        location.reload();
+    }, 300);
+}
+
+function tocarSom(){
+    const som = document.getElementById("som");
+    som.currentTime = 0;
+    som.play();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura das Letras! 🎈</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}?v=1">
+
+</head>
+<body>
+
+<div id="game-container">
+    <h1>Qual é a letra?</h1>
+    <div id="display-emoji">🍎</div>
+    
+    <div class="options" id="buttons">
+        </div>
+
+    <p id="message"></p>
+</div>
+
+<script src="{{ url_for('static', filename='js/quiz.js') }}?v=1"></script>
+
+</body>
+</html>

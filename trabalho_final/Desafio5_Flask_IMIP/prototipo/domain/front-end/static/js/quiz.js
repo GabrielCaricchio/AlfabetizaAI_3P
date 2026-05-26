@@ -1,0 +1,66 @@
+
+    /* JavaScript - A Lógica do Jogo com IA Assíncrona */
+    let corretaAtual = "";
+
+    async function loadLevel() {
+        const btnContainer = document.getElementById('buttons');
+        const emojiDisplay = document.getElementById('display-emoji');
+        const msg = document.getElementById('message');
+        const questionTitle = document.querySelector('h1');
+
+        // Estado de Loading (Feedback Visual)
+        emojiDisplay.innerHTML = '<div class="loading-spinner"></div>';
+        questionTitle.innerText = "A IA está criando um desafio...";
+        btnContainer.innerHTML = '';
+        msg.innerText = "Aguarde um instante! ⏳";
+        msg.style.color = "black";
+
+        try {
+            // Chamada Assíncrona para o Backend
+            const response = await fetch('/api/questao');
+            const data = await response.json();
+
+            // Atualiza a tela com os dados
+            questionTitle.innerText = data.pergunta;
+            emojiDisplay.innerText = "🤔"; // Pode ser trocado por imagens dinâmicas futuramente
+            corretaAtual = data.correta;
+
+            msg.innerText = "Escolha a resposta certa!";
+            
+            data.opcoes.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(opt);
+                btnContainer.appendChild(btn);
+            });
+        } catch (error) {
+            console.error("Erro ao buscar questão:", error);
+            msg.innerText = "Ops! A internet falhou. Tentando de novo...";
+            msg.style.color = "#FF5757";
+            setTimeout(loadLevel, 3000); 
+        }
+    }
+
+    function checkAnswer(selected) {
+        const msg = document.getElementById('message');
+        const btnContainer = document.getElementById('buttons');
+
+        if (selected == corretaAtual) {
+            msg.innerText = "PARABÉNS! Você acertou! 🌟";
+            msg.style.color = "#7ED957";
+            
+            // Desativa botões pós resposta certa
+            Array.from(btnContainer.children).forEach(b => b.disabled = true);
+            
+            // Próximo nível acionado
+            setTimeout(() => {
+                loadLevel();
+            }, 1500);
+        } else {
+            msg.innerText = "Tente de novo! Você consegue! 💪";
+            msg.style.color = "#FF5757";
+        }
+    }
+
+    // Iniciar o jogo
+    document.addEventListener("DOMContentLoaded", loadLevel);
