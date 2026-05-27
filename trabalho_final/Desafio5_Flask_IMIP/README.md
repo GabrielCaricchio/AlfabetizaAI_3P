@@ -96,7 +96,7 @@
 ##### Arquitetura utilizada no projeto:
 Para uma análise detalhada dos módulos, componentes e portas de comunicação, consulte o guia de [Análise da Arquitetura](./slides/arquitetura.md).
 
-![Diagrama de Arquitetura Hexagonal](./slides/diagrama_arquitetura.svg)
+![Diagrama de Arquitetura Hexagonal](slides/arquitetura.jpeg)
 
 ---
 
