@@ -55,7 +55,7 @@
         <a href="https://github.com/Pedroxxxz">
           <img src="https://avatars.githubusercontent.com/u/264173021?v=4" width="100px;" alt="Pedro Henrique José" style="border-radius: 10px;"/><br />
           <sub><b>Pedro Henrique<br>José</b></sub><br />
-          <sub>Matrícula: 0180325</sub>
+          <sub>Matrícula: 01803252</sub>
         </a>
       </td>
       <td align="center" valign="top" colspan="4" width="33.3%">

@@ -9,7 +9,7 @@ Desafio de Arquitetura de software sobre sistema para ajudar com a alfabetizaç�
 - Gabriel Arruda Caricchio  (01824947)
 - Hanna Peixoto Parente de Araujo  (01802318)
 - Ingrid Motta Santos  (01834701)
-- Pedro Henrique José  (0180325)
+- Pedro Henrique José  (01803252)
 - Tarsílio Aureliano Soares Silva  (01803880)
 
 ---

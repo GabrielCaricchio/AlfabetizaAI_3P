@@ -9,7 +9,7 @@
 - Gabriel Arruda Caricchio  (01824947)
 - Hanna Peixoto Parente de Araujo  (01802318)
 - Ingrid Motta Santos  (01834701)
-- Pedro Henrique José  (0180325)
+- Pedro Henrique José  (01803252)
 - Tarsílio Aureliano Soares Silva  (01803880)
 ##### Ferramentas utilizadas: Python e Flask
 Mais detalhes sobre as atividades nas pastas dedicadas a cada desafio especifico.
